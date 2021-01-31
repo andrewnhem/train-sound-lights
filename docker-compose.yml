@@ -1,0 +1,9 @@
+version: '2.1'
+
+services:
+  train:
+    build: ./train
+    privileged: true
+    restart: always
+    labels:
+      io.balena.features.balena-api: '1'
