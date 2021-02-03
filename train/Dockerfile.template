@@ -1,6 +1,6 @@
 FROM balenalib/%%BALENA_MACHINE_NAME%%-python:3.7-buster-build
 
-RUN install_packages python3-smbus wget unzip
+RUN install_packages python3-smbus python3-dev libasound2-dev g++ wget unzip
 
 RUN pip3 install --upgrade \
   pip \
@@ -9,7 +9,11 @@ RUN pip3 install --upgrade \
   smbus2 \
   RPi.GPIO \
   balena-sdk \
-  gpiozero
+  gpiozero \
+  simpleaudio
+
+ENV PULSE_SERVER=tcp:audio:4317
+RUN curl --silent https://raw.githubusercontent.com/balenablocks/audio/master/scripts/alsa-bridge/debian-setup.sh | sh
 
 COPY . /usr/src
 
