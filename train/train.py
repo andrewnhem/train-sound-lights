@@ -9,11 +9,12 @@ led3 = LED(27)
 button1 = Button(2)
 button2 = Button(3)
 button3 = Button(4)
-wave_obj = sa.WaveObject.from_wave_file('test.wav')
-play_obj = wave_obj.play()
+
+horn = sa.WaveObject.from_wave_file('horn-1.wav')
+# horn = sa.WaveObject.from_wave_file('horn-2.wav')
 
 button1.when_pressed = led1.toggle
 button2.when_pressed = led2.toggle
-button3.when_pressed = play_obj
+button3.when_pressed = horn.play
 
 pause()
