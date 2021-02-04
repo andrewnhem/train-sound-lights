@@ -1,4 +1,5 @@
 FROM balenalib/%%BALENA_MACHINE_NAME%%-python:3.7-buster-build
+WORKDIR /usr/src
 
 RUN install_packages python3-smbus python3-dev libasound2-dev g++ wget unzip
 
